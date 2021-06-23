@@ -24,6 +24,11 @@ const resourceServer: ResourceServer = {
   scope: "sample-scope samba",
   accessTokenFormat: "jwt",
   accessTokenTTL: 3600,
+  jwt: {
+    sign: {
+      alg: "RS256",
+    },
+  },
 };
 
 const configuration: Configuration = {
