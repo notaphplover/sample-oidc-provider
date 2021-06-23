@@ -20,18 +20,24 @@ const clients: ClientMetadata[] = [
 ];
 
 const resourceServer: ResourceServer = {
-  scope: "sample-scope",
+  audience: "sample-audience",
+  scope: "sample-scope samba",
   accessTokenFormat: "jwt",
   accessTokenTTL: 3600,
 };
 
 const configuration: Configuration = {
   clients,
+  clientDefaults: {},
   features: {
     clientCredentials: {
       enabled: true,
     },
     resourceIndicators: {
+      defaultResource() {
+        return ["http://sample-identifier.com"];
+      },
+      enabled: true,
       getResourceServerInfo() {
         return resourceServer;
       },
